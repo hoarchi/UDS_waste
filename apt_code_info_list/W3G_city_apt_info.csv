@@ -1,0 +1,4 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W3G000,0,태백시청,삭제엄금,W3G,강원도,태백시,11EQUM,개별계량장비,AF,후불,,,,,,,,,
+W3G001,1,태백소도LH천년나무1단지(BM),소도동 1-45,W3G,강원도,태백시,11EQUM,개별계량장비,AF,후불,태백소도LH천년나무1단지(BM),강원도 태백시 버들치길 4,(소도동),,4219010700,326,2021-02-03 13:19:16,128.9784331,37.1400135
+W3GFFF,999,해당없음,삭제엄금,W3G,강원도,태백시,11EQUM,개별계량장비,AF,후불,,,,,,,,,

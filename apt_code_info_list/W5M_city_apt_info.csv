@@ -1,0 +1,4 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W5M000,0,완도군청,삭제엄금,W5M,전라남도,완도군,11EQUM,개별계량장비,AF,후불,,,,,,,,,
+W5M001,1,완도읍 용암마을,,W5M,전라남도,완도군,11EQUM,개별계량장비,AF,후불,완도읍 주도길 용암리,전라남도 완도군 완도읍 주도길 39-1,,,4689025021,71,2020-06-05 13:06:28,126.7533983,34.3148599
+W5MFFF,999,해당없음,삭제엄금,W5M,전라남도,완도군,11EQUM,개별계량장비,AF,후불,,,,,,,,,

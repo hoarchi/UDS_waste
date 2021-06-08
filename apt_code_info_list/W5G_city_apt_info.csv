@@ -1,0 +1,6 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W5G000,0,해남군청,삭제엄금,W5G,전라남도,해남군,,,AF,후불,,,,,,,,,
+W5G001,1,해남하늘연가아파트,,W5G,전라남도,해남군,11EQUM,개별계량장비,AF,후불,해남하늘연가아파트,전남 해남군 해남읍 구교3길 37,,,4682025036,186,2016-10-09 19:51:43,,
+W5G002,1,해남파크사이드,,W5G,전라남도,해남군,11EQUM,개별계량장비,AF,후불,해남파크사이드,,,,4682025036,266,2016-10-09 19:51:43,,
+W5G003,1,해남 베네파크,,W5G,전라남도,해남군,11EQUM,개별계량장비,AF,후불,해남 베네파크,전라남도 해남군 해남읍 교육청길 9-3,(베네파크아파트),,4682025021,60,2020-05-28 14:49:48,126.6090343,34.5699178
+W5GFFF,999,해당없음,삭제엄금,W5G,전라남도,해남군,,,AF,후불,,,,,,,,,

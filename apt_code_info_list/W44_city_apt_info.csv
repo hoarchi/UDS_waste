@@ -1,0 +1,5 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W44000,0,음성군청,삭제엄금,W44,충청북도,음성군,11EQUM,개별계량장비,AF,후불,,,,,,,,,
+W44001,1,대소부영아파트(BM),충청북도 음성군 대소면 대청로 17,W44,충청북도,음성군,11EQUM,개별계량장비,AF,후불,대소부영아파트(BM),충청북도 음성군 대소면 대청로 17,(부영사랑으로),,4377034032,392,2020-10-26 09:28:09,127.4496018,36.9918221
+W44002,1,대소웰메이드타운(BM),충청북도 음성군 대소면 대화1길 44-8,W44,충청북도,음성군,11EQUM,개별계량장비,AF,후불,대소웰메이드타운(BM),충청북도 음성군 대소면 대화1길 44-8,(대소 웰메이드타운),,4377034022,409,2020-10-26 09:28:55,127.4966781,36.9635616
+W44FFF,999,해당없음,삭제엄금,W44,충청북도,음성군,11EQUM,개별계량장비,AF,후불,,,,,,,,,

@@ -1,0 +1,4 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W59000,0,곡성군청,삭제엄금,W59,전라남도,곡성군,11EQUM,개별계량장비,AF,후불,,,,,,,,,
+W59001,1,곡성해든센트럴,,W59,전라남도,곡성군,11EQUM,개별계량장비,AF,후불,곡성해든센트럴,전라남도 곡성군 곡성읍 학교로 87,,,4672025021,24,2018-02-19 17:11:30,127.2895938,35.2827813
+W59FFF,999,해당없음,삭제엄금,W59,전라남도,곡성군,11EQUM,개별계량장비,AF,후불,,,,,,,,,

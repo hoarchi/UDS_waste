@@ -1,0 +1,4 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W5J000,0,함평군청,삭제엄금,W5J,전라남도,함평군,11EQUM,개별계량장비,AF,후불,,,,,,,,,
+W5J001,1,함평내교주공아파트,,W5J,전라남도,함평군,11EQUM,개별계량장비,AF,후불,함평내교주공아파트,전라남도 함평군 함평읍 교광길 13-8,(함평내교 주공아파트),,4686025023,291,2020-05-28 14:51:41,126.5175104,35.0619439
+W5JFFF,999,해당없음,삭제엄금,W5J,전라남도,함평군,11EQUM,개별계량장비,AF,후불,,,,,,,,,

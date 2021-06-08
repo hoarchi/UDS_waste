@@ -1,0 +1,5 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W50000,0,순창군청,삭제엄금,W50,전라북도,순창군,,,AF,후불,,,,,,,,,
+W50001,1,대석아파트,,W50,전라북도,순창군,11EQUM,개별계량장비,BF,선불,대석아파트,전라북도 순창군 순창읍 양지길 81,(대석아파트),,4577025022,136,2016-10-09 19:51:43,,
+W50002,1,경천주공아파트,,W50,전라북도,순창군,11EQUM,개별계량장비,AF,후불,경천주공아파트,전라북도 순창군 순창읍 경천1로 102,(순창경천주공아파트),,4577025026,494,2017-05-25 10:49:19,127.1414024,35.3689625
+W50FFF,999,해당없음,삭제엄금,W50,전라북도,순창군,,,AF,후불,,,,,,,,,

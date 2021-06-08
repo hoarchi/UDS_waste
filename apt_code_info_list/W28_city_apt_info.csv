@@ -1,0 +1,6 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W28000,0,성남시중원구청,삭제엄금,W28,경기도,성남시중원구,11EQUM,개별계량장비,BF,선불,,,,,,,,,
+W28001,1,성남동현대아파트,,W28,경기도,성남시중원구,11EQUM,개별계량장비,AF,후불,성남동현대아파트,경기 성남시 중원구 둔촌대로 242,,,4113310100,376,2016-10-09 19:51:43,,
+W28002,1,업음,사용시단지명수정바람,W28,경기도,성남시중원구,11EQUM,개별계량장비,AF,후불,업음,,,,4113000000,,2016-10-09 19:51:43,,
+W28003,1,성남시 보통골,(주)솔루션아이티,W28,경기도,성남시중원구,11EQUM,개별계량장비,AF,후불,성남시 보통골,경기도 성남시 중원구 보통골로 10-7,(상대원동),,4113310500,600,2018-09-06 10:24:16,127.180581,37.434575
+W28FFF,999,해당없음,삭제엄금,W28,경기도,성남시중원구,,,AF,후불,,,,,,,,,

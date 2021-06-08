@@ -1,0 +1,4 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W68000,0,칠곡군청,삭제엄금,W68,경상북도,칠곡군,11EQUM,개별계량장비,AF,후불,,,,,,,,,
+W68001,1,효성해링턴1단지,경상북도 칠곡군 남율로9길 33,W68,경상북도,칠곡군,11EQUM,개별계량장비,AF,후불,효성해링턴1단지,경상북도 칠곡군 석적읍 남율로9길 33,(칠곡남율효성해링턴플레이스1단지),,4785025623,835,2021-04-07 15:11:48,128.4020076,36.068488
+W68FFF,999,해당없음,삭제엄금,W68,경상북도,칠곡군,11EQUM,개별계량장비,BF,선불,,,,,,,,,

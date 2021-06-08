@@ -1,0 +1,4 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W2G000,0,광명시청,,W2G,경기도,광명시,11EQUM,개별계량장비,AF,후불,,,,,,,,,
+W2G001,1,하안주공12단지,,W2G,경기도,광명시,11EQUM,개별계량장비,AF,후불,하안주공12단지,경기 광명시 하안로 284,,,4121010300,258,2016-10-09 19:51:43,126.88424031,37.4618512613
+W2GFFF,999,해당없음,삭제엄금,W2G,경기도,광명시,11EQUM,개별계량장비,AF,후불,,,,,,,,,

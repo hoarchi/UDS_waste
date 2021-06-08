@@ -1,0 +1,5 @@
+﻿aptCode,aptManage,aptName_x,aptMemo,cityCode_x,citySidoName,citySggName,equipCode,equipName,chargeCode,chargeName,aptName_y,roadAddr1,roadAddr2,cityCode_y,hbgvCode,ctznCnt,regDate,xlatlng,ylatlng
+W29000,0,성남시분당구청,삭제엄금,W29,경기도,성남시분당구,,,AF,후불,,,,,,,,,
+W29001,1,아름마을풍림아파트,,W29,경기도,성남시분당구,11EQUM,개별계량장비,AF,후불,아름마을풍림아파트,경기 성남시 분당구 탄천로 35,,,4113510600,879,2016-10-09 19:51:43,,
+W29002,1,판교더샵퍼스트파크(BM),백현동 516,W29,경기도,성남시분당구,11EQUM,개별계량장비,AF,후불,판교더샵퍼스트파크(BM),경기도 성남시 분당구 판교백현로 38,(백현동),,4113511000,1223,2021-04-21 17:26:20,127.0949994,37.3818386
+W29FFF,999,해당없음,삭제엄금,W29,경기도,성남시분당구,,,AF,후불,,,,,,,,,
