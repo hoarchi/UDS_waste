@@ -26,7 +26,7 @@ try:
         body = json_normalize(json_object['data']['list'])
         df = pd.DataFrame(body)
         body_total = body_total.append(df)
-    body_total.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste' + year + '_total_waste_bydate.csv', index=False, encoding='utf-8-sig')
+    body_total.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\' + year + '_total_waste_bydate.csv', index=False, encoding='utf-8-sig')
     print("Success")
 except:
     print("Fail")
