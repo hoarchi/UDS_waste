@@ -15,20 +15,27 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
 
-'''
 #기술통계량 구하기
 data2018 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\2018_total_waste_bydate.csv", parse_dates=['createDate'], index_col= ['createDate'])
 data2019 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\2019_total_waste_bydate.csv", parse_dates=['createDate'], index_col= ['createDate'])
 data2020 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\2020_total_waste_bydate.csv", parse_dates=['createDate'], index_col= ['createDate'])
 
-sns.distplot(data2018['disQuantity']/1000000, bins=30)
-plt.show()
-#print(data2018['disQuantity'].describe())
-#print(data2018['disQuantity'].sum())
+#plot = sns.distplot(data2018['disQuantity']/1000000, bins=30, color="blue")
+#plot = sns.distplot(data2019['disQuantity']/1000000, bins=30, color="red")
+#plot = sns.distplot(data2020['disQuantity']/1000000, bins=30, color="orange")
+#plt.xlabel('Waste Quantity(T)')
+#plt.ylabel('Distribution Density')
+#plt.legend(title="3Years")
+#fig = plot.get_figure()
+#plt.show()
+#fig.savefig('./3year_totalwaste_dist.png', dpi=150, bbox_inches='tight')
+print(data2018['disQuantity'].describe())
+print(data2018['disQuantity'].sum())
 #data2019.describe()
 #data2020.describe()
-'''
+
 
 '''
 #3년 그래프 이어서 그리기
