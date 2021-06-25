@@ -17,17 +17,10 @@ import seaborn as sns
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 
-#기술통계량 구하기
-
-
-data2018 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\city_sensus_waste_2018_bydate.csv", encoding='utf-8-sig', parse_dates =["createDate"], index_col ="createDate")
-data2019 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\city_sensus_waste_2019_bydate.csv", encoding='utf-8-sig', parse_dates =["createDate"], index_col ="createDate")
+'''
+#인구수로 나눈 자료를, 시도 단위로 그룹화 후 그룹별 평균, 최대, 최소, 분산, 합계로 만들어서 저장
 data2020 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\city_sensus_waste_2020_bydate.csv", encoding='utf-8-sig', parse_dates =["createDate"], index_col ="createDate")
-
-grouped2018 = data2018.groupby('create_sido')
-grouped2019 = data2019.groupby('create_sido')
 grouped2020 = data2020.groupby('create_sido')
-
 df = data2020.groupby('create_sido')['disQuantity_ingu'].agg(**{'mean_Quantity':'mean',
                                                    'min_Quantity' : 'min',
                                                    'max_Quantity' : 'max',
@@ -35,95 +28,57 @@ df = data2020.groupby('create_sido')['disQuantity_ingu'].agg(**{'mean_Quantity':
                                                    'sum_Quantity' : 'sum'
                                                    }).reset_index() ## 도시별, 최대, 최소, 평균, 표준편차, 합계
 df.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\city_group_2020.csv', index=False, encoding='utf-8-sig')
-plot = sns.distplot(df['mean_Quantity'], bins=30, color="orange")
-plt.xlabel('Waste Quantity(g)')
-plt.ylabel('Distribution Density')
-plt.legend(title="2020")
-fig = plot.get_figure()
-plt.show()
-fig.savefig('./2020_city_waste_dist.png', dpi=150, bbox_inches='tight')
+'''
 
-#norm_city = grouped.transform(lambda x: (x - x.mean()) / x.std()) #정규화하기
-# roll_2018_m7 = grouped2018['disQuantity_ingu'].apply(lambda grouped2018:grouped2018.rolling(window=7,min_periods=1).mean())
-# fig = plt.figure(figsize = (12, 4))
-# chart = fig.add_subplot(1,1,1)
-# chart.plot(roll_2018_m7, color='blue' , label='2018')
-# plt.title('Total Waste Trend in 2018, 2019, 2020')
-# plt.xlabel('Year')
-# plt.ylabel('Waste Quantity(T)')
-# plt.legend(loc = 'best')
+
+# 결측치 제거
+year = "2020"
+df = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\city_group_" + year + ".csv", encoding='utf-8-sig')
+df.dropna(inplace= True)
+Q1 = df['sum_Quantity'].quantile(0.1)
+Q3 = df['sum_Quantity'].quantile(0.9)
+outlier = (df['sum_Quantity'] < Q1) | (df['sum_Quantity'] > Q3)
+df.drop(df[outlier].index, inplace= True)
+df.plot(kind='box', y ='sum_Quantity', label='2020 일') #박스 플롯으로 결측치 확인
+#print(df.describe())
+
+# plot = sns.distplot(df['sum_Quantity']/365, bins=30, color="orange")
+# plt.xlabel('Waste Quantity(/g-day-인)')
+# plt.ylabel('Distribution Density')
+# plt.legend(title=year)
+# fig = plot.get_figure()
 # plt.show()
-#print(data2018['disQuantity'].describe())
-#print(data2018['disQuantity'].sum())
-#data2019.describe()
-#data2020.describe()
+# fig.savefig('./visualization/' + year + '_city_waste_dist.png', dpi=150, bbox_inches='tight')
 
 
 '''
-#3년 그래프 이어서 그리기
-data2018 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\2018_total_waste_bydate.csv", parse_dates=['createDate'], index_col= ['createDate'])
-data2019 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\2019_total_waste_bydate.csv", parse_dates=['createDate'], index_col= ['createDate'])
-data2020 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\2020_total_waste_bydate.csv", parse_dates=['createDate'], index_col= ['createDate'])
+2018   mean_Quantity  min_Quantity  max_Quantity  std_Quantity  sum_Quantity
+count     103.000000    103.000000    103.000000    103.000000    103.000000
+mean       44.907656     25.801881     91.383087      9.254303  16282.333697
+std        25.192171     16.301612    103.421285      6.897940   9195.986566
+min         7.964273      0.007285     13.748928      1.527692   2906.959600
+25%        20.863217     10.488571     46.028371      5.219503   7615.074170
+50%        40.414898     24.676884     74.323732      8.401030  14711.489085
+75%        65.132368     39.005192    114.140233     11.872150  23773.314259
+max        96.007834     62.156327    989.041107     52.538611  35042.859566
 
-roll_2018_m7 = pd.Series.rolling(data2018['disQuantity']/1000000, window=7, center = False).mean()
-roll_2019_m7 = pd.Series.rolling(data2019['disQuantity']/1000000, window=7, center = False).mean()
-roll_2020_m7 = pd.Series.rolling(data2020['disQuantity']/1000000, window=7, center = False).mean()
+2019   mean_Quantity  min_Quantity  max_Quantity  std_Quantity  sum_Quantity
+count     112.000000    112.000000    112.000000    112.000000    112.000000
+mean       45.579002     22.596179    130.756827     11.363437  16541.912742
+std        25.716602     14.434111    527.670845     27.396434   9407.953991
+min         8.296365      0.119825     16.096228      1.953170   3028.173124
+25%        22.214642      9.888770     38.645702      4.575591   8108.344449
+50%        43.842392     19.978690     72.491091      8.578721  15850.151679
+75%        66.251017     35.140693    114.836594     12.070547  24181.621051
+max        98.374206     55.069231   5644.949418    293.963303  35906.585032
 
-fig = plt.figure(figsize = (12, 4))
-chart = fig.add_subplot(1,1,1)
-chart.plot(roll_2018_m7, color='blue' , label='2018')
-chart.plot(roll_2019_m7, color='red' , label='2019')
-chart.plot(roll_2020_m7, color='orange' , label='2020')
-plt.title('Total Waste Trend in 2018, 2019, 2020')
-plt.xlabel('Year')
-plt.ylabel('Waste Quantity(T)')
-plt.legend(loc = 'best')
-plt.show()
-fig.savefig('./total_waste_3year_001.png', dpi=150, bbox_inches='tight')
+2020   mean_Quantity  min_Quantity  max_Quantity  std_Quantity  sum_Quantity
+count     114.000000    114.000000    114.000000    114.000000    114.000000
+mean       49.084242     30.906036     82.731113      8.572030  17901.088973
+std        25.147662     18.152870     41.491711      4.743366   9239.393006
+min        10.814542      0.452863     16.662300      1.552155   3958.122398
+25%        26.479022     15.323588     44.137231      5.145799   9585.095014
+50%        45.799798     30.136158     79.103817      7.894100  16762.725974
+75%        69.961265     43.792381    114.563891     11.476011  25605.823071
+max       102.472359     71.334342    177.953393     35.966134  37504.883221
 '''
-
-'''
-#3년 그래프 겹치기 7일 평균선
-data2018 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\2018_total_waste_bydate.csv")
-data2019 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\2019_total_waste_bydate.csv")
-data2020 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\2020_total_waste_bydate.csv")
-
-roll_2018_m7 = pd.Series.rolling(data2018['disQuantity']/1000000, window=7, center = False).mean()
-roll_2019_m7 = pd.Series.rolling(data2019['disQuantity']/1000000, window=7, center = False).mean()
-roll_2020_m7 = pd.Series.rolling(data2020['disQuantity']/1000000, window=7, center = False).mean()
-
-fig = plt.figure(figsize = (12, 4))
-chart = fig.add_subplot(1,1,1)
-chart.plot(roll_2018_m7, color='blue' , label='2018')
-chart.plot(roll_2019_m7, color='red' , label='2019')
-chart.plot(roll_2020_m7, color='orange' , label='2020')
-plt.title('Total Waste Trend in 2018, 2019, 2020')
-plt.xlabel('DAY')
-plt.ylabel('Waste Quantity(T)')
-plt.legend(loc = 'best')
-plt.show()
-fig.savefig('./total_waste_3year_002.png', dpi=150, bbox_inches='tight')
-'''
-
-#2018 total graph only
-#new_2018['disQuantity'].plot(color='blue', label='High Column')
-#plt.show()
-
-#2018 mean7 graph only
-#roll_mean7.plot(color='blue', label='7 day rolling mean')
-#plt.show()
-
-
-#plt.title('2018 total Waste in Korea', fontsize=12)
-#plt.ylabel('disQuantity', fontsize=10)
-#plt.xlabel('createDate', fontsize=10)
-#plt.legend(fontsize=10, loc='best')
-
-#시도별 구분할때 좋을 듯
-#ax = sns.lineplot(x='Date', y='CumVal', hue='Group',size='Size',data=data2018)
-#plt.title('Line Graph of different size w/ Long-form df by seaborn', fontsize=20)
-#plt.ylabel('Cummulative Num', fontsize=14)
-#plt.xlabel('Date', fontsize=14)
-#plt.legend(fontsize=12, loc='best')
-#plt.show()
-

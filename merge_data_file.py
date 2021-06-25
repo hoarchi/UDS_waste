@@ -1,7 +1,14 @@
 import pandas as pd
+import glob
+import os
 
-#csv에서 시군구단위로 합치기
+df1 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_merge_2020_byday.csv", encoding='utf-8-sig')
+df1['create_sido']= df1[['citySidoName','citySggName']].apply(lambda x: '_'.join(x), axis=1)
+df1.to_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_merge_2020_byday.csv", index=False, encoding='utf-8-sig')
+
 '''
+#csv에서 시군구명을 시+구 명으로 합치고 데이터 통합
+
 df1 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\sensus_ingu.csv", encoding='utf-8-sig')
 df1['create_sido']= df1[['citySidoName','citySggName']].apply(lambda x: '_'.join(x), axis=1)
 df2 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\CityList.csv", encoding='utf-8-sig')
