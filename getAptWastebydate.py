@@ -1,3 +1,5 @@
+#데이터 가져오기 - 아파트별 일별(365일자료) 배출 총량
+
 import urllib.request as request
 import urllib.parse as parse
 import json
