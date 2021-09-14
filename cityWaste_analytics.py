@@ -17,20 +17,26 @@ import seaborn as sns
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 
-'''
-#인구수로 나눈 자료를, 시도 단위로 그룹화 후 그룹별 평균, 최대, 최소, 분산, 합계로 만들어서 저장
-data2020 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\city_sensus_waste_2020_bydate.csv", encoding='utf-8-sig', parse_dates =["createDate"], index_col ="createDate")
-grouped2020 = data2020.groupby('create_sido')
-df = data2020.groupby('create_sido')['disQuantity_ingu'].agg(**{'mean_Quantity':'mean',
+
+#시군구명을 시+군구 명으로 추가하기
+df = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_info_total_merge.csv", encoding='utf-8-sig')
+df['create_sido'] = df[['citySidoName','citySggName']].apply(lambda x: '_'.join(map(str, x)), axis=1)
+df.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_info_total_merge.csv', index=False, encoding='utf-8-sig')
+
+
+#세대수로 나눈 자료를, 시도 단위로 그룹화 후 그룹별 평균, 최대, 최소, 분산, 합계로 만들어서 저장
+apt_ctzn_total = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_info_total_merge.csv", encoding='utf-8-sig')
+df = apt_ctzn_total.groupby('create_sido')['sum_disQuantity_2018_ctznCnt'].agg(**{'mean_Quantity':'mean',
                                                    'min_Quantity' : 'min',
                                                    'max_Quantity' : 'max',
                                                    'std_Quantity' : 'std',
                                                    'sum_Quantity' : 'sum'
                                                    }).reset_index() ## 도시별, 최대, 최소, 평균, 표준편차, 합계
-df.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\city_group_2020.csv', index=False, encoding='utf-8-sig')
+df.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\city_group_by_ctzn_2018.csv', index=False, encoding='utf-8-sig')
+
+print(df.info())
+
 '''
-
-
 # 결측치 제거
 year = "2020"
 df = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\city_group_" + year + ".csv", encoding='utf-8-sig')
@@ -41,6 +47,7 @@ outlier = (df['sum_Quantity'] < Q1) | (df['sum_Quantity'] > Q3)
 df.drop(df[outlier].index, inplace= True)
 df.plot(kind='box', y ='sum_Quantity', label='2020 일') #박스 플롯으로 결측치 확인
 #print(df.describe())
+'''
 
 # plot = sns.distplot(df['sum_Quantity']/365, bins=30, color="orange")
 # plt.xlabel('Waste Quantity(/g-day-인)')

@@ -15,6 +15,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
+'''
 #세대수와 세대수별 배출량의 상관관계 분석
 year = "2020"
 aptinfo = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_info_merge.csv", encoding='utf-8-sig')
@@ -23,22 +24,34 @@ aptinfo = aptinfo.replace([np.inf, -np.inf], np.nan) #infinite를 NAN으로 치�
 aptdata = aptdata.replace([np.inf, -np.inf], np.nan) #infinite를 NAN으로 치환
 dataframe = pd.merge(aptinfo, aptdata, on="aptCode", how="outer")
 dataframe = dataframe.round(4) #소수점 4자리로 정리
+'''
 
+'''
 #결측치 정리
 Q1 = dataframe['sum_Quantity'].quantile(0.0)
 Q3 = dataframe['sum_Quantity'].quantile(0.95)
 outlier = (dataframe['ctznCnt'] > 2000) | (dataframe['sum_Quantity'] > Q3)
 dataframe.drop(dataframe[outlier].index, inplace= True)
+'''
 
 #kdeplot
-# plt.figure(figsize=(15, 15))
-# sns.set_theme(color_codes=True)
-# plot = sns.kdeplot(data=dataframe, x="sum_Quantity", y="ctznCnt", fill=True)
-# fig = plot.get_figure()
-# plt.show()
-# fig.savefig('./visualization/apt_ctzn_sum_2020.png', dpi=150, bbox_inches='tight')
-# print("success")
+apt_ctzn = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_info_total_merge.csv", encoding='utf-8-sig')
+apt_ctzn = apt_ctzn.replace([np.inf, -np.inf], np.nan) #infinite를 NAN으로 치환
+Q1 = apt_ctzn['sum_disQuantity_2019_ctznCnt'].quantile(0.1)
+Q3 = apt_ctzn['sum_disQuantity_2019_ctznCnt'].quantile(0.9)
+outlier = (apt_ctzn['ctznCnt'] > 1000) | (apt_ctzn['sum_disQuantity_2019_ctznCnt'] > Q3)
+apt_ctzn.drop(apt_ctzn[outlier].index, inplace= True) #결측치 정리
+apt_ctzn['sum_disQuantity_2019_ctznCnt'] = apt_ctzn['sum_disQuantity_2019_ctznCnt'] / 1000
 
+plt.figure(figsize=(15, 15))
+sns.set_theme(color_codes=True)
+plot = sns.kdeplot(data=apt_ctzn, x="sum_disQuantity_2019_ctznCnt", y="ctznCnt", fill=True)
+fig = plot.get_figure()
+plt.show()
+fig.savefig('./visualization/apt_ctzn_sum_2019_under1000.png', dpi=150, bbox_inches='tight')
+print(apt_ctzn['sum_disQuantity_2019_ctznCnt'].describe())
+
+'''
 #선형회귀
 plt.figure(figsize=(15, 15))
 sns.set_theme(color_codes=True)
@@ -47,6 +60,7 @@ plot = sns.lmplot(x="sum_Quantity", y="ctznCnt", data = dataframe)
 plt.show()
 plot.savefig('./visualization/apt_ctzn_sum_2020_replot.png', dpi=150, bbox_inches='tight')
 print("success")
+'''
 
 #histogram+hexplot
 # plt.figure(figsize=(15, 15))
@@ -63,7 +77,7 @@ print("success")
 # plt.show()
 
 '''
-#아파트 단위로 그룹화 후 그룹별 평균, 최대, 최소, 분산, 합계
+#아파트 단위로 그룹화 후 그룹별 평균, 최대, 최소, 분산, 합계  <- 의미 없음. 
 year = "2020"
 data = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_merge_" + year + "_byday.csv", encoding='utf-8-sig')
 df = data.groupby('aptCode')['disQuantity_by_ctznCnt'].agg(**{'mean_Quantity':'mean',
@@ -75,7 +89,7 @@ df = data.groupby('aptCode')['disQuantity_by_ctznCnt'].agg(**{'mean_Quantity':'m
 df = df.round(4) #소수점 4자리로 정리
 df = df.replace([np.inf, -np.inf], np.nan) #infinite를 NAN으로 치환
 
-df.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_group_' + year + '.csv', index=False, encoding='utf-8-sig')
+df.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_group_' + year + '.csv', index=False, encoding='utf-8-sig') <- 데이터 의미 없어서 삭제함. 코드 만 참고용.
 print(df.describe())
 '''
 

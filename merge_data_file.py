@@ -2,9 +2,44 @@ import pandas as pd
 import glob
 import os
 
-df1 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_merge_2020_byday.csv", encoding='utf-8-sig')
-df1['create_sido']= df1[['citySidoName','citySggName']].apply(lambda x: '_'.join(x), axis=1)
-df1.to_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_merge_2020_byday.csv", index=False, encoding='utf-8-sig')
+
+
+
+#apt_merge_2018_byday.csv에서 aptCode별로 disQuantity의 합계를 구하고, aptinfo에서 ctznCnt를 찾아서 나누면, 아파트 단지별 연간 세대당 베출량이 됨.
+#이거를 apt_ctznCnt_2018_byyear.csv 로 cityCode와 함께 저장. 연가 지자체별 세대당 배출량 특성을 알 수 있음.
+'''
+year = "2020"
+data = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_merge_" + year + "_byday.csv", encoding='utf-8-sig')
+df = data.groupby('aptCode')['disQuantity'].agg(**{'sum_disQuantity_' + year : 'sum'}).reset_index() ## aptCode별 disQuantity의 연간 합계
+df = df.round(4) #소수점 4자리로 정리
+df = df.replace([np.inf, -np.inf], np.nan) #infinite를 NAN으로 치환
+
+df.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_' + year + '.csv', index=False, encoding='utf-8-sig')
+print(df.describe())
+'''
+
+#2018,2019,2020 aptCode별 disQuantity의 연간 합계를 apt_code_info_merge에 합치고, 연도별 diaQuantity를 ctznCnt로 나누서 정리
+'''아파트 단지별 연간 배출량을 세대당 연간 배출량으로 데이터 전처리
+df2018 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_2018.csv", encoding='utf-8-sig')
+df2019 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_2019.csv", encoding='utf-8-sig')
+df2020 = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_2020.csv", encoding='utf-8-sig')
+df_2018_2019 = pd.merge(df2018,df2019, how='outer',on='aptCode')
+df_total = pd.merge(df_2018_2019,df2020, how='outer',on='aptCode')
+df_total.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\aptcode_sum_byyear.csv', index=False, encoding='utf-8-sig')
+df_total = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\aptcode_sum_byyear.csv", encoding='utf-8-sig')
+df_apt_info = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_info_merge.csv", encoding='utf-8-sig')
+df_apt_info_merge = pd.merge(df_total, df_apt_info, how='outer', on='aptCode')
+df_apt_info_merge.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_info_toal_merge.csv', index=False, encoding='utf-8-sig')
+df_apt_info_total_merge = pd.read_csv("C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_info_toal_merge.csv", encoding='utf-8-sig')
+df_apt_info_total_merge['sum_disQuantity_2018_ctznCnt'] = df_apt_info_total_merge['sum_disQuantity_2018'] / df_apt_info_total_merge['ctznCnt']
+df_apt_info_total_merge['sum_disQuantity_2019_ctznCnt'] = df_apt_info_total_merge['sum_disQuantity_2019'] / df_apt_info_total_merge['ctznCnt']
+df_apt_info_total_merge['sum_disQuantity_2020_ctznCnt'] = df_apt_info_total_merge['sum_disQuantity_2020'] / df_apt_info_total_merge['ctznCnt']
+df_apt_info_total_merge.to_csv('C:\\Users\\hogun\\PycharmProjects\\UDS_waste\\total_waste\\apt_code_info_toal_merge.csv', index=False, encoding='utf-8-sig')
+'''
+
+print(df_apt_info_total_merge.info())
+print(df_apt_info_total_merge.head())
+print(df_apt_info_total_merge.tail())
 
 '''
 #csv에서 시군구명을 시+구 명으로 합치고 데이터 통합
